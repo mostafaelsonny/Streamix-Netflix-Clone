@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: #0D0D0D;
+    color: #F5F5F5;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #1F1F1F; }
+  ::-webkit-scrollbar-thumb { background: #FF4C29; border-radius: 3px; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-sf-primary hover:bg-sf-secondary text-white font-semibold px-6 py-2.5 rounded-md transition-all duration-200 flex items-center gap-2;
+  }
+  .btn-secondary {
+    @apply bg-white/20 hover:bg-white/30 text-white font-semibold px-6 py-2.5 rounded-md transition-all duration-200 backdrop-blur-sm flex items-center gap-2;
+  }
+  .movie-card {
+    @apply relative flex-shrink-0 cursor-pointer rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-10;
+  }
+  .skeleton { @apply bg-sf-card animate-pulse rounded-lg; }
+  .row-scroll {
+    @apply flex gap-3 overflow-x-auto pb-4 scroll-smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #FF4C29 #1F1F1F;
+  }
+  .glass { @apply bg-black/60 backdrop-blur-md border border-white/10; }
+  .nav-link { @apply text-gray-400 hover:text-white transition-colors duration-200 font-medium text-sm; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fadeInUp { animation: fadeInUp 0.6s ease forwards; }
+.animate-fadeIn { animation: fadeIn 0.3s ease forwards; }
+
+.shimmer {
+  background: linear-gradient(90deg, #1F1F1F 25%, #2a2a2a 50%, #1F1F1F 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.banner-gradient {
+  background: linear-gradient(
+    to right,
+    rgba(13,13,13,0.98) 0%,
+    rgba(13,13,13,0.7) 40%,
+    rgba(13,13,13,0.1) 70%,
+    rgba(13,13,13,0) 100%
+  ),
+  linear-gradient(
+    to top,
+    rgba(13,13,13,1) 0%,
+    rgba(13,13,13,0) 25%
+  );
+}
+
+.card-overlay {
+  background: linear-gradient(to top, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.4) 50%, transparent 100%);
+}
+
+.trailer-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+}
